@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>회원가입</title>
+    <link rel="canonical" href="https://getbootstrap.kr/docs/5.1/examples/checkout/">
+</head>
+<body>
+    <div class="col-12">
+        <label for="username" class="form-label">이름</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <div class="invalid-feedback">
+                Your username is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="userid" class="form-label">아이디</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" id="userid" placeholder="ID" required>
+            <div class="invalid-feedback">
+                Your ID is required.
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="email" class="form-label">이메일<span class="input-group-text">@sherpasoft.com</span></label>
+        <input type="email" class="form-control" id="email" placeholder="sherpa@sherpasoft.com">
+        <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="nickname" class="form-label">닉네임</label>
+        <input type="text" class="form-control" id="nickname" placeholder="input nickname" required>
+        <div class="invalid-feedback">
+            Please enter your shipping nickname.
+        </div>
+    </div>
+    <div class="col-md-5">
+        <label for="department" class="form-label">부서</label>
+        <select class="form-select" id="department" required>
+            <option value="">Choose...</option>
+            <option>기술연구소</option>
+            <option>기술본부</option>
+            <option>영업본부</option>
+            <option>HR</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a valid department.
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,16 +1,13 @@
 package com.reportweb.reportweb.dto;
 
-import com.reportweb.reportweb.domain.role.UserRole;
+import com.reportweb.reportweb.domain.role.UserDepartment;
 import com.reportweb.reportweb.dto.form.UserJoinRequestFormDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @NoArgsConstructor
@@ -35,20 +32,25 @@ public class UserJoinRequestDto {
     @Column(unique = true)
     private String nickName;
 
+    private UserDepartment userDepartment;
+
 
     @Builder
-    public UserJoinRequestDto(String userName, String userId, String userPasswd, String userEmail, String nickName) {
+    public UserJoinRequestDto(String userName, String userId, String userPasswd, String userEmail, String nickName, UserDepartment userDepartment) {
         this.userName = userName;
         this.userId = userId;
         this.userPasswd = userPasswd;
         this.userEmail = userEmail;
         this.nickName = nickName;
+        this.userDepartment = userDepartment;
     }
     public static UserJoinRequestDto userJoinApply(UserJoinRequestFormDto userJoinFormDto, PasswordEncoder passwordEncoder) {
         UserJoinRequestDto userJoin = UserJoinRequestDto.builder()
                 .userName(userJoinFormDto.getUserName())
                 .userEmail(userJoinFormDto.getUserEmail())
                 .userId(userJoinFormDto.getUserId())
+                .nickName(userJoinFormDto.getNickName())
+                .userDepartment(userJoinFormDto.getUserDepartment())
                 .userPasswd(passwordEncoder.encode(userJoinFormDto.getUserPasswd()))  //암호화처리
                 .build();
         return userJoin;

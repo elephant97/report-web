@@ -13,35 +13,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
-@RequiredArgsConstructor
-@RequestMapping(value = "/login")
 @Controller
+@RequiredArgsConstructor
+//@RequestMapping(value = "join")
 public class UserJoinController {
 
     private final UserJoinService userJoinService;
     private final PasswordEncoder passwordEncoder;
 
-    @GetMapping(value = "/join-user")
+    @GetMapping(value = "/user-join")
     public String joinForm(Model map)
     {
         map.addAttribute("UserJoinRequestFormDto", new UserJoinRequestFormDto());
-        return "join/join-form";
+        return "META-INF/resources/join/join-form.html";
     }
 
-    @PostMapping(value = "join-user")
+    @PostMapping(value = "/user-join")
     public String joinForm(@Valid UserJoinRequestFormDto userJoinRequestFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            return "join/join-form";
+            return "META-INF/resources/join/join-form.html";
         }
         try {
             UserJoinRequestDto userJoinRequestDto = UserJoinRequestDto.userJoinApply(userJoinRequestFormDto, passwordEncoder);
             userJoinService.saveJoinStay(userJoinRequestDto);
         }catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
-            return "join/join-form";
+            return "META-INF/resources/join/join-form.html";
         }
         return "redirect:/";
     }

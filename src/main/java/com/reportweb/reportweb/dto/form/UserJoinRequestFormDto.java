@@ -1,5 +1,6 @@
 package com.reportweb.reportweb.dto.form;
 
+import com.reportweb.reportweb.domain.role.UserDepartment;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,12 +30,17 @@ public class UserJoinRequestFormDto {
     private String userEmail;
     @NotEmpty(message = "NICKNAME은 필수 입력 값 입니다.")
     private String nickName;
+
+    @NotEmpty(message = "Department는 필수 입력 값 입니다.")
+    private UserDepartment userDepartment;
+
     @Builder
-    public UserJoinRequestFormDto(String userName, String userId, String userPasswd, String userEmail, String nickName) {
+    public UserJoinRequestFormDto(String userName, String userId, String userPasswd, String userEmail, String nickName, UserDepartment userDepartment) {
         this.userName = userName;
         this.userId = userId;
         this.userPasswd = userPasswd;
         this.userEmail = userEmail;
         this.nickName = nickName;
+        this.userDepartment = userDepartment;
     }
 }
