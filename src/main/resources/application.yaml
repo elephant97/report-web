@@ -1,0 +1,12 @@
+server:
+  port: 18080
+
+debug: false
+management.endpoints.web.exposure.include: "*"
+
+spring:
+  datasource:
+    url: jdbc:mysql://128.10.20.92:3308/psm
+    username: psm
+    password: psm
+    driver-class-name: com.mysql.cj.jdbc.Driver
