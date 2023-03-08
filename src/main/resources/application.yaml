@@ -10,3 +10,8 @@ spring:
     username: psm
     password: psm
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+#mvc:
+#  view:
+#    prefix: /WEB-INF/views
+#    suffix: .html

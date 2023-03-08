@@ -31,7 +31,7 @@ public class UserJoinRequestFormDto {
     @NotEmpty(message = "NICKNAME은 필수 입력 값 입니다.")
     private String nickName;
 
-    @NotEmpty(message = "Department는 필수 입력 값 입니다.")
+//    @NotEmpty(message = "Department는 필수 입력 값 입니다.")
     private UserDepartment userDepartment;
 
     @Builder

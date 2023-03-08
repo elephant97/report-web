@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-
-@Controller
 @RequiredArgsConstructor
-//@RequestMapping(value = "join")
+@RequestMapping(value = "/join")
+@Controller
 public class UserJoinController {
 
     private final UserJoinService userJoinService;
@@ -27,20 +26,20 @@ public class UserJoinController {
     public String joinForm(Model map)
     {
         map.addAttribute("UserJoinRequestFormDto", new UserJoinRequestFormDto());
-        return "META-INF/resources/join/join-form.html";
+        return "join/join-form";
     }
 
     @PostMapping(value = "/user-join")
     public String joinForm(@Valid UserJoinRequestFormDto userJoinRequestFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            return "META-INF/resources/join/join-form.html";
+            return "join/join-form";
         }
         try {
             UserJoinRequestDto userJoinRequestDto = UserJoinRequestDto.userJoinApply(userJoinRequestFormDto, passwordEncoder);
             userJoinService.saveJoinStay(userJoinRequestDto);
         }catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
-            return "META-INF/resources/join/join-form.html";
+            return "join/join-form";
         }
         return "redirect:/";
     }
