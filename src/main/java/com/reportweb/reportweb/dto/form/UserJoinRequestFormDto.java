@@ -29,18 +29,17 @@ public class UserJoinRequestFormDto {
     @Email(message = "이메일 형식으로 입력해주세요.")
     private String userEmail;
     @NotEmpty(message = "NICKNAME은 필수 입력 값 입니다.")
-    private String nickName;
+    private String nickname;
 
-//    @NotEmpty(message = "Department는 필수 입력 값 입니다.")
     private UserDepartment userDepartment;
 
     @Builder
-    public UserJoinRequestFormDto(String userName, String userId, String userPasswd, String userEmail, String nickName, UserDepartment userDepartment) {
+    public UserJoinRequestFormDto(String userName, String userId, String userPasswd, String userEmail, String nickname, UserDepartment userDepartment) {
         this.userName = userName;
         this.userId = userId;
         this.userPasswd = userPasswd;
         this.userEmail = userEmail;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.userDepartment = userDepartment;
     }
 }

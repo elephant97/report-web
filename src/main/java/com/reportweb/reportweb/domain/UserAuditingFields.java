@@ -17,7 +17,7 @@ public class UserAuditingFields {
     @Column(nullable = false) private String userPasswd;
 
     @Column(length = 100) private String userEmail;
-    @Column(length = 100) private String nickName;
+    @Column(length = 100) private String nickname;
 
 }
 

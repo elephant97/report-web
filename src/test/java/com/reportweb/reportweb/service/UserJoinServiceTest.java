@@ -25,13 +25,13 @@ public class UserJoinServiceTest {
 
     public UserJoinRequestDto saveJoinStay(){
         UserJoinRequestFormDto userJoinRequestFormDto = UserJoinRequestFormDto.builder()
-                .userName("수민")
-                .userId("test")
-                .userEmail("smpark@sherpasoft.com")
-                .userPasswd("1111")
-                .nickName("숨")
-                .userDepartment(LAB)
-                .build();
+                                                        .userName("수민")
+                                                        .userId("test")
+                                                        .userEmail("smpark@sherpasoft.com")
+                                                        .userPasswd("1111")
+                                                        .nickname("숨")
+                                                        .userDepartment(LAB)
+                                                        .build();
         return UserJoinRequestDto.userJoinApply(userJoinRequestFormDto, passwordEncoder);
     }
 

@@ -26,7 +26,7 @@ public class UserJoinService {
         if(userJoinRequstRepository.findByuserEmail(userJoinRequestDto.getUserEmail())!= null){
             throw new IllegalStateException("중복된 Email 입니다.");
         }
-        if(userJoinRequstRepository.findByuserEmail(userJoinRequestDto.getNickName())!= null){
+        if(userJoinRequstRepository.findByNickname(userJoinRequestDto.getNickname())!= null){
             throw new IllegalStateException("중복된 Nickname 입니다.");
         }
     }
