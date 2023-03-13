@@ -2,6 +2,7 @@ package com.reportweb.reportweb.dto.form;
 
 import com.reportweb.reportweb.domain.role.UserDepartment;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -10,7 +11,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+@Data
 @NoArgsConstructor
 @Getter
 public class UserJoinRequestFormDto {
@@ -31,6 +34,7 @@ public class UserJoinRequestFormDto {
     @NotEmpty(message = "NICKNAME은 필수 입력 값 입니다.")
     private String nickname;
 
+    @NotNull
     private UserDepartment userDepartment;
 
     @Builder

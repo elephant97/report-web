@@ -11,22 +11,22 @@ import javax.transaction.Transactional;
 @Transactional
 @Service
 public class UserJoinService {
-    private final UserJoinRequestRepository userJoinRequstRepository;
+    private final UserJoinRequestRepository userJoinRequestRepository;
 
     public UserJoinRequestDto saveJoinStay(UserJoinRequestDto userJoinRequestDto){
         validateDuplicateUser(userJoinRequestDto);
 
-        return userJoinRequstRepository.save(userJoinRequestDto);
+        return userJoinRequestRepository.save(userJoinRequestDto);
     }
 
     private void validateDuplicateUser(UserJoinRequestDto userJoinRequestDto){
-        if(userJoinRequstRepository.findByUserId(userJoinRequestDto.getUserId()) != null){
+        if(userJoinRequestRepository.findByUserId(userJoinRequestDto.getUserId()) != null){
             throw new IllegalStateException("중복된 ID 입니다.");
         }
-        if(userJoinRequstRepository.findByuserEmail(userJoinRequestDto.getUserEmail())!= null){
+        if(userJoinRequestRepository.findByuserEmail(userJoinRequestDto.getUserEmail())!= null){
             throw new IllegalStateException("중복된 Email 입니다.");
         }
-        if(userJoinRequstRepository.findByNickname(userJoinRequestDto.getNickname())!= null){
+        if(userJoinRequestRepository.findByNickname(userJoinRequestDto.getNickname())!= null){
             throw new IllegalStateException("중복된 Nickname 입니다.");
         }
     }

@@ -24,7 +24,7 @@
 </th:block>
 
 <div layout:fragment="content">
-    <form action="/join/user-join" role="form" method="post"  th:object="${UserJoinRequestFormDto}">
+    <form action="/join/user-join" role="form" th:object="${UserJoinRequestFormDto}" method="post" >
         <div class="col-12">
             <label th:for="userName" class="form-label">이름</label>
             <div class="input-group has-validation">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="col-12">
-            <label th:for="userid" class="form-label">아이디</label>
+            <label th:for="userId" class="form-label">아이디</label>
             <div class="input-group has-validation">
                 <input type="text" th:field="*{userId}" class="form-control" placeholder="ID" required>
                 <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="fieldError">Your userId is required.</p>

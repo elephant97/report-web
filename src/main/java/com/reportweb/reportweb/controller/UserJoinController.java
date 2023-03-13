@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,8 +21,8 @@ import javax.validation.Valid;
 @Controller
 public class UserJoinController {
 
-    private final UserJoinService userJoinService;
-    private final PasswordEncoder passwordEncoder;
+    private final UserJoinService userJoinService = null;
+    private final PasswordEncoder passwordEncoder = null;
 
     @GetMapping(value = "/user-join")
     public String joinForm(Model map)
@@ -31,13 +32,13 @@ public class UserJoinController {
     }
 
     @PostMapping(value = "user-join")
-    public String joinForm(@Valid UserJoinRequestFormDto UserJoinRequestFormDto, BindingResult bindingResult, Model model){
-        System.out.println("########################"+UserJoinRequestFormDto.getUserName());
+    public String joinForm(@Valid @ModelAttribute("UserJoinRequestFormDto") UserJoinRequestFormDto userJoinRequestFormDto, BindingResult bindingResult, Model model){
+        System.out.println("########################"+userJoinRequestFormDto.getUserName());
         if(bindingResult.hasErrors()){
-            return "join/join-mm";
+            return "join/join-form";
         }
         try {
-            UserJoinRequestDto userJoinRequestDto = UserJoinRequestDto.userJoinApply(UserJoinRequestFormDto, passwordEncoder);
+            UserJoinRequestDto userJoinRequestDto = UserJoinRequestDto.userJoinApply(userJoinRequestFormDto, passwordEncoder);
             userJoinService.saveJoinStay(userJoinRequestDto);
         }catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());

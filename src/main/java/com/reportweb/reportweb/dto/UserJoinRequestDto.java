@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-@Data
+
 @NoArgsConstructor
 @Getter
 @Table(name = "user_join_stay")
@@ -22,7 +22,6 @@ public class UserJoinRequestDto {
 
 
     @Column(unique = true)
-
     private String userName;
     @Column(unique = true)
     private String userId;
