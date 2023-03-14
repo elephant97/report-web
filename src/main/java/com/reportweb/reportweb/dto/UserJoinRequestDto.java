@@ -21,7 +21,6 @@ public class UserJoinRequestDto {
     private Long userCode;
 
 
-    @Column(unique = true)
     private String userName;
     @Column(unique = true)
     private String userId;
@@ -46,6 +45,7 @@ public class UserJoinRequestDto {
         this.userDepartment = userDepartment;
     }
     public static UserJoinRequestDto userJoinApply(UserJoinRequestFormDto userJoinFormDto, PasswordEncoder passwordEncoder) {
+        System.out.println("################"+userJoinFormDto.getUserPasswd());
         UserJoinRequestDto userJoin = UserJoinRequestDto.builder()
                 .userName(userJoinFormDto.getUserName())
                 .userEmail(userJoinFormDto.getUserEmail())

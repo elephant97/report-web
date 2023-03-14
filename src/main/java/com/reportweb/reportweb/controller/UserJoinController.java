@@ -21,8 +21,8 @@ import javax.validation.Valid;
 @Controller
 public class UserJoinController {
 
-    private final UserJoinService userJoinService = null;
-    private final PasswordEncoder passwordEncoder = null;
+    private final UserJoinService userJoinService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/user-join")
     public String joinForm(Model map)
